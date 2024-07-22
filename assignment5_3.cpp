@@ -9,13 +9,19 @@
 #include <iostream>
 
 
-// Arrays
-const int ELEMENTS;
-int array1[ELEMENTS];
-
-
 using namespace std;
 
+
+// Arrays
+const int ELEMENTS1 = 3;
+const int ELEMENTS2 = 4;
+int array1[ELEMENTS1];
+int array2[ELEMENTS2];
+
+
+
+// Function Prototypes
+double arrayMedian(int array1[], int ELEMENTS);
 
 
 int main() {
@@ -24,4 +30,9 @@ int main() {
 
 
     return 0;
+}
+
+// Function definitions
+double arrayMedian(int array1[], int ELEMENTS) {
+    for (int i = 0; i < )
 }

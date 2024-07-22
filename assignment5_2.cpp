@@ -51,7 +51,6 @@ void showSeats();
 void readPrices();
 
 
-
 int main() {
 
 // Initialize array to all available
@@ -75,74 +74,73 @@ int main() {
     cin >> menuChoice;
 
 // Validate user selection
-while (menuChoice != '1' && menuChoice != '2')
-        {
-            cout << "Invalid selection. Please try again" << endl;
-            cout << "Menu: " << endl
-                 << "1) Buy Ticket" << endl
-                 << "2) Total sell and exit" << endl << endl
-                 << "Enter your choice: ";
-            cin >> menuChoice;
-        }
+    while (menuChoice != '1' && menuChoice != '2')
+            {
+                cout << "Invalid selection. Please try again" << endl;
+                cout << "Menu: " << endl
+                     << "1) Buy Ticket" << endl
+                     << "2) Total sell and exit" << endl << endl
+                     << "Enter your choice: ";
+                cin >> menuChoice;
+            }
 
-if (menuChoice == '1') {
-    do {
+    if (menuChoice == '1') {
+        do {
 
- 
 // Prompt user for what seats they want
-    cout << "Enter row: ";
-    cin >> userRow;
-    // Validate user response
-    while (userRow < MINROWS || userRow > MAXROWS) 
-        {
-            cout << "Invalid selection. Please try again." << endl;
-            cout << "Enter row: ";
-            cin >> userRow;
+        cout << "Enter row: ";
+        cin >> userRow;
+        // Validate user response
+        while (userRow < MINROWS || userRow > MAXROWS) 
+            {
+                cout << "Invalid selection. Please try again." << endl;
+                cout << "Enter row: ";
+                cin >> userRow;
+            }
+
+        cout << "Enter seat: ";
+        cin >> userSeat;
+
+            while (userSeat < MINSEATS || userSeat > MAXSEATS) 
+            {
+                cout << "Invalid selection. Please try again." << endl;
+                cout << "Enter seat: ";
+                cin >> userSeat;
+            }
+
+    // Check if seat is available
+        if (Theater[userRow][userSeat] == '#') {
+            // This seat is taken, prompt user to select new seat
+            cout << endl << "Invalid seat choice" << endl;
+        } else {
+            // Seat is available, update seating chart with # for taken seat
+            Theater[userRow][userSeat] = '#';
         }
 
-    cout << "Enter seat: ";
-    cin >> userSeat;
 
-        while (userSeat < MINSEATS || userSeat > MAXSEATS) 
-        {
-            cout << "Invalid selection. Please try again." << endl;
-            cout << "Enter seat: ";
-            cin >> userSeat;
-        }
+    // Add seat price to the total revenue 
+        totalRevenue = totalRevenue + rowPrice[userRow];
 
-// Check if seat is available
-if (Theater[userRow][userSeat] == '#') {
-    // This seat is taken, prompt user to select new seat
-    cout << endl << "Invalid seat choice" << endl;
-} else {
-    // Seat is available, update seating chart with # for taken seat
-    Theater[userRow][userSeat] = '#';
-}
+    // Update the total tickets sold count
+        seatsSold = seatsSold + 1;
 
+    // Reprompt the user if they want to sell another ticket
+        cout << "Menu: " << endl
+             << "1) Buy Ticket" << endl
+             << "2) Total sell and exit" << endl << endl
+             << "Enter your choice: ";
+        cin >> menuChoice;
 
-// Add seat price to the total revenue 
-    totalRevenue = totalRevenue + rowPrice[userRow];
-
-// Update the total tickets sold count
-    seatsSold = seatsSold + 1;
-
-// Reprompt the user if they want to sell another ticket
-    cout << "Menu: " << endl
-         << "1) Buy Ticket" << endl
-         << "2) Total sell and exit" << endl << endl
-         << "Enter your choice: ";
-    cin >> menuChoice;
-
-    while (menuChoice != '1' && 
-            menuChoice != '2')
-        {
-            cout << "Invalid selection. Please try again" << endl;
-            cout << "Menu: " << endl
-                 << "1) Buy Ticket" << endl
-                 << "2) Total sell and exit" << endl << endl
-                 << "Enter your choice: ";
-            cin >> menuChoice;
-        }
+        while (menuChoice != '1' && 
+                menuChoice != '2')
+            {
+                cout << "Invalid selection. Please try again" << endl;
+                cout << "Menu: " << endl
+                     << "1) Buy Ticket" << endl
+                     << "2) Total sell and exit" << endl << endl
+                     << "Enter your choice: ";
+                cin >> menuChoice;
+            }
 
 
  } while (menuChoice == '1');
