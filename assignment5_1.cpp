@@ -5,6 +5,19 @@
 // Summary: This program allows the user to play a lotto game by allowing the user to select lotto numbers, and comparing them to randomized computer-generated lotto numbers to determine if/what the user wins
 
 
+// PSEUDOCODE
+
+// Declare and initialize variables, arrays, and function prototypes
+// Display a menu
+// Input user selection 
+// Validate user selection with acceptable values
+// Prompt user for their name
+// Prompt user for their lotto numbers
+// Generate and store winning lotto numbers
+// Count the number of matches between user and random numbers generated
+// Display lotto results
+// Prompt menu again to allow user to choose to play again or terminate program
+
 #include <iostream>
 #include <stdlib.h> 
 #include <iomanip>
