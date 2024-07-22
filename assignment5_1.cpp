@@ -46,9 +46,7 @@ bool noDuplicates(int ArrayName[], int IndexNumber);
 int matchCount(int ArrayName1[], int ArrayName2[]);
 
 int main() {
-
-while (menuSelection == '1') {
-
+  
 // Play lotto menu - prompt user to play the lotto game
         cout << "LITTLE CITY LOTTO MODEL:" << endl
          << "------------------------" << endl
@@ -58,59 +56,100 @@ while (menuSelection == '1') {
 
         cin >> menuSelection;
 
-        if (menuSelection == 'q' || 'Q') {
-            break;
+    // Validate user has inputted an acceptable response
+        while (menuSelection != '1' && 
+            menuSelection != 'Q' && 
+            menuSelection != 'q') 
+        {
+            cout << "Invalid selection. Please try again" << endl;
+            cout << endl << "LITTLE CITY LOTTO MODEL:" << endl 
+            << "------------------------" << endl 
+            << "1) Play lotto" << endl 
+            << "q) Quit Program" << endl << endl
+            << "Please make a selection: " << endl; 
+            
+            cin >> menuSelection;
         }
 
-// Validate user has inputted an acceptable response
-    while (menuSelection != '1' && 
-           menuSelection != 'Q' && 
-           menuSelection != 'q') 
-    {
-        cout << "Invalid selection. Please try again" << endl;
-        cout << endl << "LITTLE CITY LOTTO MODEL:" << endl 
-        << "------------------------" << endl 
-        << "1) Play lotto" << endl 
-        << "q) Quit Program" << endl << endl
-        << "Please make a selection: " << endl; 
+
+     if (menuSelection == '1') {
+    do {
+    // Validate user has inputted an acceptable response
+        while (menuSelection != '1' && 
+            menuSelection != 'Q' && 
+            menuSelection != 'q') 
+        {
+            cout << "Invalid selection. Please try again" << endl;
+            cout << endl << "LITTLE CITY LOTTO MODEL:" << endl 
+            << "------------------------" << endl 
+            << "1) Play lotto" << endl 
+            << "q) Quit Program" << endl << endl
+            << "Please make a selection: " << endl; 
+            
+            cin >> menuSelection;
+        }
+
+    // Prompt user for their name
+        cout << "Please enter your name: " << endl;
+        cin >> userName;
+
+    // Prompt user for their lotto numbers
+        getLottoPicks();
+    
+    // Generate and store winning lotto numbers
+        GenWinNums();
+
+    // Count matching numbers
+        userMatchCount = matchCount(UserTicket, WinningNums);
+
+    // DISPLAY LOTTO RESULTS
+        cout << userName << "'s LOTTO RESULTS" << endl
+        << "-----------------------" << endl
+        << "WINNING TICKET NUMBERS:"; //array loop // << endl
+
+        for (int i = 0; i < LOTTONUMS; i++) {
+            cout << " " << WinningNums[i];
+        }
+
+        cout << endl << userName << "'s TICKET:";
+
+        for (int i = 0; i < LOTTONUMS; i++) {
+            cout << " " << UserTicket[i];
+        }
+
+        cout << endl << "RESULTS:" << endl
+        << "--------" << endl
+        << "Number Matches: " << userMatchCount << endl
+        << "Winnings      : " << ResultString[userMatchCount] << endl << endl;
+
+        cout << "LITTLE CITY LOTTO MODEL:" << endl
+            << "------------------------" << endl
+            << "1) Play lotto" << endl
+            << "q) Quit Program" << endl
+            << "Please make a selection: " << endl;
+
+            cin >> menuSelection;
         
-        cin >> menuSelection;
-    }
+    // Validate user has inputted an acceptable response
+        while (menuSelection != '1' && 
+               menuSelection != 'Q' && 
+               menuSelection != 'q') 
+        {
+            cout << "Invalid selection. Please try again" << endl;
+            cout << endl << "LITTLE CITY LOTTO MODEL:" << endl 
+            << "------------------------" << endl 
+            << "1) Play lotto" << endl 
+            << "q) Quit Program" << endl << endl
+            << "Please make a selection: " << endl; 
+            
+            cin >> menuSelection;
+        }
 
-// Prompt user for their name
-    cout << "Please enter your name: " << endl;
-    cin >> userName;
-
-// Prompt user for their lotto numbers
-    getLottoPicks();
-   
-// Generate and store winning lotto numbers
-    GenWinNums();
-
-// Count matching numbers
-    userMatchCount = matchCount(UserTicket, WinningNums);
-
-// DISPLAY LOTTO RESULTS
-cout << userName << "'s LOTTO RESULTS" << endl
-<< "-----------------------" << endl
-<< "WINNING TICKET NUMBERS:"; //array loop // << endl
-
-for (int i = 0; i < LOTTONUMS; i++) {
-    cout << " " << WinningNums[i];
+    } while (menuSelection == '1');   
 }
 
-cout << endl << userName << "'s TICKET:";
 
-for (int i = 0; i < LOTTONUMS; i++) {
-    cout << " " << UserTicket[i];
-}
-
-cout << endl << "RESULTS:" << endl
-<< "--------" << endl
-<< "Number Matches: " << userMatchCount << endl
-<< "Winnings      : " << ResultString[userMatchCount] << endl << endl;
-}
-    return 0;
+   return 0;
 }
 
 
@@ -142,8 +181,6 @@ int GenRandNum() {
     int ranNum = 0;
     // while outside of bounds, assign a new random number
         ranNum = rand() % 41 + 1;
-        cout << "This is our random number: " << ranNum << endl;
-
     return ranNum;
 }
 
@@ -153,13 +190,11 @@ void GenWinNums() {
         WinningNums[i] = GenRandNum();
      // check for duplicates
      while (noDuplicates(WinningNums, i) == false) {
-        cout << "Duplicate detected: " << i << "Equals " << WinningNums[i] << endl;
         WinningNums[i] = GenRandNum();
     
      }
     }
-     
-    }
+}
 
 
 // Function to check if user's lotto selection is already in the userTickey array
