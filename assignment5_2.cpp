@@ -26,7 +26,7 @@
 
 using namespace std;
 
-// declare and initialize variables
+// Declare and initialize variables
 char menuChoice = '1';
 int userRow = 0;
 const int MAXROWS = 14;
@@ -75,8 +75,7 @@ int main() {
     cin >> menuChoice;
 
 // Validate user selection
-while (menuChoice != '1' && 
-            menuChoice != '2')
+while (menuChoice != '1' && menuChoice != '2')
         {
             cout << "Invalid selection. Please try again" << endl;
             cout << "Menu: " << endl
