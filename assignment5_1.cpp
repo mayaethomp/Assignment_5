@@ -4,17 +4,6 @@
 // Assignment #5, Problem #1
 // Summary: This program allows the user to play a lotto game by allowing the user to select lotto numbers, and comparing them to randomized computer-generated lotto numbers to determine if/what the user wins
 
-/* 
-
--------LOTTO RULES-------
-1. 7 lotto numbers
-2. numbers drawn 2x/week
-3. 6 matching numbers --> million $ prize
-4. 5 --> $5000
-5. 4 --> $100
-6. 3 --> free ticket
-
-*/
 
 #include <iostream>
 #include <stdlib.h> 
