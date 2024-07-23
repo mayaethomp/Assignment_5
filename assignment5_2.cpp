@@ -158,6 +158,8 @@ int main() {
 
 
 // Function Definitions
+
+// Function that displays the available seats
 void showSeats() {
 
     cout << "* Seats available" << endl
@@ -176,6 +178,7 @@ void showSeats() {
     }
 }
 
+// Function that opens, reads, and closes prices.txt file
 void readPrices() {
     fstream infile("prices.txt", ios::in); // open the file
 
